@@ -1,0 +1,22 @@
+{% extends '_base.html' %}
+
+{% block title %}
+manage modules
+{% endblock title %}
+
+{% block content %}
+<ul class="list-group">
+    {% for module in module_list %}
+    <li class="list-group-item">{{module}}
+    -
+    <a href="#" class="link-danger">Delete</a>
+    -
+    <a href="{% url 'courses:content_add' module.pk 'text'  %}" class="link-success">Add Content</a>
+    -
+    <a href="{% url 'courses:content_list' module.pk %}" class="link-secondary">Manage Content</a>
+  </li>
+{% endfor %}
+  </ul>
+
+
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends '_base.html' %}
+
+{% block title %}
+manage contents
+{% endblock title %}
+
+{% block content %}
+<ul class="list-group">
+    {% for content in content_list %}
+    <li class="list-group-item">{{content}}
+    -
+    <a href="{% url 'courses:content_list' content.pk %}" class="link-danger">Delete Content</a>
+  </li>
+{% endfor %}
+  </ul>
+
+
+{% endblock content %}

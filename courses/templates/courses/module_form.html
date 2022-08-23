@@ -1,0 +1,17 @@
+{% extends '_base.html' %}
+
+{% block title %}
+add module
+{% endblock title %}
+
+{% block content %}
+<form method="post">
+{% for form in formset %}
+{{form}}
+<br/>
+{% endfor %}
+{{formset.management_form}}
+{% csrf_token %}
+<input type="submit" value="Add Course" />
+</form>
+{% endblock content %}
