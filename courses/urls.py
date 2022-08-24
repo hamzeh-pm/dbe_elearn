@@ -26,4 +26,6 @@ urlpatterns = [
         views.ContentCreateUpdateView.as_view(),
         name="content_add",
     ),
+    path("courses/", views.CourseListView.as_view(), name="course_list"),
+    path("courses/<slug:slug>", views.CourseDetailView.as_view(), name="course_detail"),
 ]

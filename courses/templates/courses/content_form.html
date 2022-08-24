@@ -5,9 +5,9 @@ add content
 {% endblock title %}
 
 {% block content %}
-<form method="post">
+<form method="post" enctype="multipart/form-data">
 {{form.as_p}}
 {% csrf_token %}
-<input type="submit" value="Add Course" />
+<input type="submit" value="Add" />
 </form>
 {% endblock content %}

@@ -11,9 +11,15 @@ manage modules
     -
     <a href="#" class="link-danger">Delete</a>
     -
-    <a href="{% url 'courses:content_add' module.pk 'text'  %}" class="link-success">Add Content</a>
-    -
     <a href="{% url 'courses:content_list' module.pk %}" class="link-secondary">Manage Content</a>
+    -
+    <a href="{% url 'courses:content_add' module.pk 'text'  %}" class="link-success">Add Text</a>
+    -
+    <a href="{% url 'courses:content_add' module.pk 'image'  %}" class="link-success">Add Image</a>
+    -
+    <a href="{% url 'courses:content_add' module.pk 'video'  %}" class="link-success">Add Video</a>
+    -
+    <a href="{% url 'courses:content_add' module.pk 'file'  %}" class="link-success">Add File</a>
   </li>
 {% endfor %}
   </ul>

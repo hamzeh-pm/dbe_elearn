@@ -1,0 +1,21 @@
+{% extends '_base.html' %}
+
+{% block title %}
+manage courses
+{% endblock title %}
+
+{% block content %}
+<h4>{{course}}</h4>
+     <p>  this course include {{course.modules.all.count}} modules</p>
+      <h5> instructor {{course.owner}}</h5>
+      <p>{{course.overview}}</p>
+
+      <h3>Content</h3>
+      {% for module in course.modules.all %}
+      <h4>{{module}} </h4>
+        {% for content in  module.contents.all %}
+        {{content.item.render}}
+        {% endfor %}
+        <hr />
+      {% endfor %}
+{% endblock content %}

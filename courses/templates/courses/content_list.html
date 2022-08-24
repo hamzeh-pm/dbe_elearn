@@ -1,5 +1,5 @@
 {% extends '_base.html' %}
-
+{% load course %}
 {% block title %}
 manage contents
 {% endblock title %}
@@ -7,7 +7,7 @@ manage contents
 {% block content %}
 <ul class="list-group">
     {% for content in content_list %}
-    <li class="list-group-item">{{content}}
+    <li class="list-group-item">{{ content.item }} #{{content.item | model_name}}
     -
     <a href="{% url 'courses:content_list' content.pk %}" class="link-danger">Delete Content</a>
   </li>

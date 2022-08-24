@@ -9,6 +9,7 @@ urlpatterns = [
     path("accounts/logout/", auth_views.LogoutView.as_view(), name="logout"),
     path("admin/", admin.site.urls),
     path("courses/", include("courses.urls", namespace="courses")),
+    path("api/", include("courses.api.urls", namespace="api")),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,4 +1,5 @@
 from readline import get_completer_delims
+from typing import Optional
 
 from django.apps import apps
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -6,7 +7,13 @@ from django.forms.models import modelform_factory
 from django.http import HttpRequest
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    ListView,
+    UpdateView,
+)
 from django.views.generic.base import TemplateResponseMixin, View
 
 from .forms import ModuleFormset
@@ -37,7 +44,7 @@ class OwnerCourseEditMixin(OwnerCourseMixin, OwnerEditMixin):
 
 
 class CourseManageListView(OwnerCourseMixin, ListView):
-    template_name = "courses/course_list.html"
+    template_name = "courses/course_manage_list.html"
     context_object_name = "course_list"
     permission_required = "courses.view_course"
 
@@ -139,3 +146,15 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
             return redirect("courses:content_list", self.module.id)
 
         return self.render_to_response({"form": form, "object": self.obj})
+
+
+class CourseListView(ListView):
+    model = Course
+    template_name: str = "courses/course_list.html"
+    context_object_name: Optional[str] = "course_list"
+
+
+class CourseDetailView(DetailView):
+    model = Course
+    template_name: str = "courses/course_detail.html"
+    context_object_name: Optional[str] = "course"
